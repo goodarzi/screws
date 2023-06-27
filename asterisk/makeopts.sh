@@ -1,0 +1,155 @@
+#!/usr/bin/env bash 
+set -e
+set -x
+PARAMS=(
+--disable-category MENUSELECT_ADDONS 
+--enable-category MENUSELECT_APPS 
+--enable app_bridgewait
+--enable app_speech_utils
+--disable app_voicemail_imap
+--disable app_voicemail_odbc
+--disable app_alarmreceiver
+--disable app_amd
+--enable app_audiosocket
+--disable app_festival
+--disable app_mp3
+--disable app_morsecode
+--disable app_test
+--disable app_zapateller
+--disable app_macro
+--disable app_osplookup
+--disable-category MENUSELECT_BRIDGES 
+ --enable bridge_builtin_features 
+ --enable bridge_builtin_interval_features 
+ --enable bridge_holding 
+ --enable bridge_native_rtp 
+ --enable bridge_simple 
+ --enable bridge_softmix 
+ --disable-category MENUSELECT_CDR 
+ --enable cdr_custom 
+ --enable cdr_csv 
+ --disable-category MENUSELECT_CEL 
+ --enable cel_custom 
+ --disable-category MENUSELECT_CHANNELS 
+ --enable chan_bridge_media 
+ --enable chan_iax2 
+ --enable chan_pjsip 
+ --enable chan_rtp 
+ --enable chan_audiosocket 
+ --enable chan_console 
+--disable-category MENUSELECT_CODECS 
+ --enable codec_resample 
+ --enable codec_gsm 
+ --enable codec_ulaw 
+ --enable codec_alaw 
+ --enable codec_opus 
+ --enable codec_g722 
+--disable-category MENUSELECT_FORMATS 
+ --enable format_sln 
+ --enable format_gsm 
+ --enable format_pcm 
+ --enable format_wav_gsm 
+ --enable format_wav 
+ --enable format_g729 
+--enable-category MENUSELECT_FUNCS 
+--disable-category MENUSELECT_PBX 
+ --enable pbx_config 
+ --enable pbx_loopback 
+ --enable pbx_spool 
+--disable-category MENUSELECT_RES 
+ --enable res_clialiases 
+ --enable res_clioriginate 
+ --enable res_config_curl 
+ --enable res_convert 
+ --enable res_crypto 
+ --enable res_curl 
+ --enable res_format_attr_ilbc 
+ --enable res_format_attr_opus 
+ --enable res_format_attr_silk 
+ --enable res_format_attr_siren14 
+ --enable res_format_attr_siren7 
+ --enable res_http_media_cache 
+ --enable res_http_post 
+ --enable res_http_websocket 
+ --enable res_limit 
+ --enable res_manager_devicestate 
+ --enable res_manager_presencestate 
+ --enable res_musiconhold 
+ --enable res_mutestream 
+ --enable res_mwi_devstate 
+ --enable res_parking 
+ --enable res_pjproject 
+ --enable res_pjsip 
+ --enable res_pjsip_acl 
+ --enable res_pjsip_authenticator_digest 
+ --enable res_pjsip_caller_id 
+ --enable res_pjsip_config_wizard
+ --enable res_pjsip_dialog_info_body_generator 
+ --enable res_pjsip_diversion 
+ --enable res_pjsip_dlg_options 
+ --enable res_pjsip_dtmf_info 
+ --enable res_pjsip_empty_info 
+ --enable res_pjsip_endpoint_identifier_anonymous 
+ --enable res_pjsip_endpoint_identifier_user 
+ --enable res_pjsip_endpoint_identifier_ip 
+ --enable res_pjsip_exten_state 
+ --enable res_pjsip_geolocation 
+ --enable res_pjsip_header_funcs 
+ --enable res_pjsip_logger 
+ --enable res_pjsip_messaging 
+ --enable res_pjsip_mwi 
+ --enable res_pjsip_mwi_body_generator 
+ --enable res_pjsip_nat 
+ --enable res_pjsip_notify 
+ --enable res_pjsip_one_touch_record_info 
+ --enable res_pjsip_outbound_authenticator_digest 
+ --enable res_pjsip_outbound_publish 
+ --enable res_pjsip_outbound_registration 
+ --enable res_pjsip_path 
+ --enable res_pjsip_publish_asterisk 
+ --enable res_pjsip_pubsub 
+ --enable res_pjsip_refer 
+ --enable res_pjsip_registrar 
+ --enable res_pjsip_rfc3326 
+ --enable res_pjsip_rfc3329 
+ --enable res_pjsip_sdp_rtp 
+ --enable res_pjsip_send_to_voicemail 
+ --enable res_pjsip_session 
+ --enable res_pjsip_sips_contact 
+ --enable res_pjsip_stir_shaken 
+ --enable res_pjsip_transport_websocket 
+ --enable res_pjsip_xpidf_body_generator 
+ --enable res_rtp_asterisk 
+ --enable res_rtp_multicast 
+ --enable res_security_log 
+ --enable res_sorcery_astdb 
+ --enable res_sorcery_config 
+ --enable res_sorcery_memory 
+ --enable res_sorcery_memory_cache 
+ --enable res_sorcery_realtime 
+ --enable res_timing_timerfd 
+ --enable res_speech 
+ --enable res_speech_aeap 
+ --enable res_srtp 
+ --enable res_stir_shaken 
+ --enable res_stun_monitor 
+ --enable res_audiosocket 
+ --enable res_hep_pjsip 
+ --enable res_hep_rtcp 
+ --enable res_phoneprov 
+ --enable res_pjsip_aoc 
+ --enable res_pjsip_history 
+ --enable res_pjsip_phoneprov_provider 
+ --enable res_tonedetect 
+--disable-category MENUSELECT_TESTS 
+--disable-category MENUSELECT_CFLAGS 
+ --enable BUILD_NATIVE 
+ --enable OPTIONAL_API 
+--disable-category MENUSELECT_UTILS 
+--disable-category MENUSELECT_AGIS 
+--disable-category MENUSELECT_CORE_SOUNDS 
+--disable-category MENUSELECT_MOH 
+--disable-category MENUSELECT_EXTRA_SOUNDS 
+)
+cd /usr/src/asterisk-2*/ && \
+menuselect/menuselect "${PARAMS[@]}" menuselect.makeopts
